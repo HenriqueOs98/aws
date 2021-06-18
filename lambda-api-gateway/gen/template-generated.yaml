@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: A simple backendwith a RESTful API endpoint using Amazon API Gateway.
+Resources:
+  helloworldpython3:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: app.lambda_handler
+      Runtime: python3.6
+      CodeUri: s3://hick-code-sam/7c361027e2431b90bfde4ff439d27e3e
+      Description: A simple backend with a RESTful API endpoint using Amazon API Gateway.
+      MemorySize: 128
+      Timeout: 3
+      Events:
+        HelloWorldSAMAPI:
+          Type: Api
+          Properties:
+            Path: /hello
+            Method: GET
